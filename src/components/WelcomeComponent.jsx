@@ -18,15 +18,15 @@ export default function WelcomeComponent() {
         //     .catch ( (error) => errorResponse(error) )
         //     .finally ( () => console.log('cleanup') )
 
-        retrieveHelloWorldBean()
-            .then( (response) => successfulResponse(response) )
-            .catch ( (error) => errorResponse(error) )
-            .finally ( () => console.log('cleanup') )
+        // retrieveHelloWorldBean()
+        //     .then( (response) => successfulResponse(response) )
+        //     .catch ( (error) => errorResponse(error) )
+        //     .finally ( () => console.log('cleanup') )
 
             retrieveHelloWorldPathVariable('Priyanshu')
             .then( (response) => successfulResponse(response) )
             .catch ( (error) => errorResponse(error) )
-            .finally ( () => console.log('cleanup') )    
+            .finally ( () => console.log('cleanup path variable') )    
     }
 
     function successfulResponse(response) {

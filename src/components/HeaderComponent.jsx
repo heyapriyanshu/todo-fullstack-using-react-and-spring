@@ -29,6 +29,7 @@ export default function HeaderComponent() {
                         </div>
                         <ul className="navbar-nav">
                             <li className="nav-item fs-5">{!isAuthenticated && <Link className="nav-link" to="/login">Login</Link>}</li>
+                            <li className="nav-item fs-5">{!isAuthenticated && <Link className="nav-link" to="/register">Register</Link>}</li>
                             <li className="nav-item fs-5">{isAuthenticated && <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>}</li>
                         </ul>
                     </nav>

@@ -1,4 +1,11 @@
-export default function FooterComponent() {
+import { useContext } from "react";
+import { AuthContext } from "./security/AuthContext";
+
+function FooterComponent() {
+    const authContext = useContext(AuthContext)
+
+    console.log(`Footer component - ${authContext.number}`);
+
     return (
         <footer className="footer">
             <div className="container">
@@ -7,3 +14,5 @@ export default function FooterComponent() {
         </footer>
     )
 }
+
+export default FooterComponent

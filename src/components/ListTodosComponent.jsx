@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deleteTodo, retrieveAllTodosForUsername } from "../api/TodoApiService"
+import { retrieveAllTodosForUsernameApi, deleteTodoApi } from "../api/TodoApiService"
 import { useAuth } from "./security/AuthContext"
 import { useNavigate } from "react-router-dom"
 
@@ -26,7 +26,7 @@ export default function ListTodosComponent() {
 
     function refreshTodos() {
         
-        retrieveAllTodosForUsername(username)
+        retrieveAllTodosForUsernameApi(username)
         .then(response => {
             setTodos(response.data)
         }
@@ -44,7 +44,7 @@ export default function ListTodosComponent() {
         navigate(`/todo/-1`)
     }
     function handleDeleteTodo(username,id){
-        deleteTodo(username,id)
+        deleteTodoApi(username,id)
         .then(
 
             () => {
