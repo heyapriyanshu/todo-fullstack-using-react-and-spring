@@ -1,7 +1,5 @@
 import './RegisterComponent.css' 
-import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
-import { useAuth } from './security/AuthContext'
 export default function RegisterComponent() {
   const navigate = useNavigate();
   function handleSubmit(){

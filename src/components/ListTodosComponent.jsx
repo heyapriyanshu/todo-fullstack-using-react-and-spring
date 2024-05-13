@@ -15,14 +15,13 @@ export default function ListTodosComponent() {
     const navigate = useNavigate()
     const username = authContext.username
 
-    const [serialNo,setSerialNo] = useState(1)
     // const todos = [
         // { id: 1, description: 'Learn AWS', done: false, targetDate: targetDate },
         // { id: 2, description: 'Learn Full Stack Dev', done: false, targetDate: targetDate },
         // { id: 3, description: 'Learn DevOps', done: false, targetDate: targetDate },
     // ]
 
-    useEffect( () => refreshTodos(), [])
+    useEffect( () => refreshTodos(),)
 
     function refreshTodos() {
         
@@ -80,7 +79,7 @@ export default function ListTodosComponent() {
                             todos.map(
                                 (todo,index) => (
                                     <tr key={todo.id}>
-                                        <td>{serialNo+index}</td>
+                                        <td>{1+index}</td>
                                         <td>{todo.description}</td>
                                         <td>{todo.done.toString()}</td>
                                         <td>{todo.targetDate.toString()}</td>

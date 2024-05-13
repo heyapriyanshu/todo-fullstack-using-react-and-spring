@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
-import { retrieveHelloWorldBean, retrieveHelloWorldPathVariable } from '../api/HelloWorldApiService'
+import { retrieveHelloWorldPathVariable } from '../api/HelloWorldApiService'
 
 
 export default function WelcomeComponent() {

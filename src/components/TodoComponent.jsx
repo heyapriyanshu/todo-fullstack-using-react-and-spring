@@ -22,12 +22,16 @@ export default function TodoComponent() {
     const navigate = useNavigate()
     
     useEffect(
-        () => retrieveTodos(),
-        [id]
+        () => retrieveTodos()
         )
+        // useEffect(
+        //     () => retrieveTodos(),
+        //     [id]
+        //     )
+    
 
         function retrieveTodos(){
-        if(id!=-1)
+        if(id!==-1)
             {retrieveTodoApi(username, id)
             .then(response => {
                 setDescription(response.data.description)
@@ -45,7 +49,7 @@ export default function TodoComponent() {
                 targetDate : values.targetDate,
                 done: false
             }
-            if(id==-1){
+            if(id===-1){
                 createTodoApi(username,todo)
                 .then(response => {
                     console.log("success")
@@ -73,7 +77,7 @@ export default function TodoComponent() {
                 errors.description = 'Enter atleast 3 characters'
             }
         
-            if(values.targetDate == null || values.targetDate == '' || moment(values.targetDate).isBefore(yesterday) ) {
+            if(values.targetDate === null || values.targetDate === '' || moment(values.targetDate).isBefore(yesterday) ) {
                 
                 errors.targetDate = 'Enter a valid target date'
             }

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useAuth } from './security/AuthContext'
 import Typewriter from "typewriter-effect";
-import TodoList from './TodoList';
 
 function LoginComponent() {
 
