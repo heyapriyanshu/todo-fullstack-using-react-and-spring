@@ -11,14 +11,12 @@ export default function TodoComponent() {
     const {id} = useParams()
     const today = new Date();
     const[targetDate, setTargetDate] = useState(formatDate(today))
-    const yesterday = new Date(today.setDate(today.getDate() - 1));
+    const yesterday = new Date(today.setDate(today.getDate() - 1))
     const[description, setDescription] = useState('')
     
 
     const authContext = useAuth()
-    
     const username = authContext.username
-
     const navigate = useNavigate()
     
     useEffect(
@@ -78,7 +76,7 @@ export default function TodoComponent() {
             }
         
             if(values.targetDate === null || values.targetDate === '' || moment(values.targetDate).isBefore(yesterday) ) {
-                
+                console.log(`Yesterday : ${yesterday}, TargetDate : ${values.targetDate}`)
                 errors.targetDate = 'Enter a valid target date'
             }
     

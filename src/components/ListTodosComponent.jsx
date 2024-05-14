@@ -20,8 +20,8 @@ export default function ListTodosComponent() {
         // { id: 2, description: 'Learn Full Stack Dev', done: false, targetDate: targetDate },
         // { id: 3, description: 'Learn DevOps', done: false, targetDate: targetDate },
     // ]
-
-    useEffect( () => refreshTodos(),)
+    // eslint-disable-next-line
+    useEffect( () => refreshTodos(),[])
 
     function refreshTodos() {
         
@@ -40,7 +40,7 @@ export default function ListTodosComponent() {
     }
     function handleAddTodo(){
         console.log("add")
-        navigate(`/todo/-1`)
+        navigate('/todo/-1')
     }
     function handleDeleteTodo(username,id){
         deleteTodoApi(username,id)
@@ -66,10 +66,10 @@ export default function ListTodosComponent() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Sl. No.</th>
-                            <th>description</th>
-                            <th>isDone</th>
-                            <th>targetDate</th>
+                            <th></th>
+                            <th>Description</th>
+                            <th>Done</th>
+                            <th>Target Date</th>
                             <th></th>
                             
                         </tr>
