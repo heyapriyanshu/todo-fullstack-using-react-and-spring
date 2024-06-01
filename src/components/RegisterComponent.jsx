@@ -7,33 +7,10 @@ export default function RegisterComponent() {
   }
 	return (
     <>
-    {/* Section: Design Block */}
-    <section className="" >
-      {/* Jumbotron */}
-      <div
-        className="px-4 py-5 px-md-5 text-center text-lg-start"
-        
-      >
-        <div className="container fixed-height">
-          <div className="row gx-lg-5 align-items-center">
-            <div className="col-lg-6 mb-5 mb-lg-0 ">
-            <h1
-								className="my-5 display-5 fw-bold ls-tight"
-								style={{ color: "hsl(210, 29%, 25%)" }}
-							>
-								ToDo List  <br />
-								<span style={{ color: "hsl(218, 81%, 75%)" }}>
-									for your 
-								</span>
-                <span style={{ color: "hsl(210, 29%, 25%)",  marginLeft : 14}}>
-									 business
-								</span>
-							</h1>
-            </div>
-            <div className="col-lg-6 mb-5 mb-lg-0">
-              <div className="card">
-              
-                <div className="card-body py-5 px-md-5 text-center upper-layer">
+   
+   <div className="card">
+						<div className="card-body py-5 px-md-5">
+							<div className="text-center">
                 <h2 className="fw-bold mb-5" style={{ color: "hsl(210, 29%, 25%)" }} >Register Now!</h2>
                   <form>
                     {/* 2 column grid layout with text inputs for the first and last names */}
@@ -101,16 +78,13 @@ export default function RegisterComponent() {
                     >
                       Register
                     </button>
+                    
                    
                   </form>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      {/* Jumbotron */}
-    </section>
+        
     {/* Section: Design Block */}
   </>
   

@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function ListTodosComponent() {
-    // const today = new Date()
-
-    // const targetDate = new Date(today.getFullYear() + 12, today.getMonth(), today.getDay())
+   
     const [message,setMessage] = useState(null)
     const [todos,setTodos] = useState([])
 
@@ -15,11 +13,7 @@ export default function ListTodosComponent() {
     const navigate = useNavigate()
     const username = authContext.username
 
-    // const todos = [
-        // { id: 1, description: 'Learn AWS', done: false, targetDate: targetDate },
-        // { id: 2, description: 'Learn Full Stack Dev', done: false, targetDate: targetDate },
-        // { id: 3, description: 'Learn DevOps', done: false, targetDate: targetDate },
-    // ]
+   
     // eslint-disable-next-line
     useEffect( () => refreshTodos(),[])
 
@@ -50,11 +44,10 @@ export default function ListTodosComponent() {
                 setMessage(`Delete of todo with id = ${id} successful`);
                 refreshTodos();
                 setTimeout(() => {
-                    setMessage(null); // Clear the message after 3 seconds
-                }, 1500); // 3000 milliseconds = 3 seconds
+                    setMessage(null); 
+                }, 1500); 
             }
-            //1: Display message
-            //2: Update Todos list
+           
         )
         .catch(error => console.log(error))
     }
