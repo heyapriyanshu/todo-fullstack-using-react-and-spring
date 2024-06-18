@@ -1,11 +1,14 @@
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from "./security/AuthContext";
 import { retrieveHelloWorldPathVariable } from '../api/HelloWorldApiService'
 
 
 export default function WelcomeComponent() {
 
-    const {username } = useParams()
+    
+	const authContext = useAuth();
+	const username = authContext.username;
 
     const [message, setMessage] = useState(null)
 
