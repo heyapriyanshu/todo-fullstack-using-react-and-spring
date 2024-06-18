@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 
 
 function LoginComponent() {
-    const [username, setUsername] = useState('Priyanshu');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
@@ -44,15 +44,22 @@ function LoginComponent() {
         }
     }
 
-    function handleRegister() {
+   async function handleRegister() {
        
        const userData = {
-		email,
-		password, 
+		email, 
 		firstName,
 		lastName,
+        password
 		
 	   }
+       const response = await authContext.register(userData)
+       console.log("response",response)
+       if (response) {
+        setIsRegistering(false)
+    } else {
+        setShowErrorMessage(true);
+    }
 	   console.log(userData)
     }
 

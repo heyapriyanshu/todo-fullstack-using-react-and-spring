@@ -1,3 +1,29 @@
+
+Features added/changes in V1.2
+
+1. Added multiple user support with register and login
+2. Jwt removed and basic authentication is used
+3. Added footer
+4. UI Changes: including add todo, pagination, removed call helloworld button
+5. TodoApp clickable and link to home for mobile devices
+
+
+ More features to add
+
+ 1. Add loading to all the buttons
+ 2. Create user profile and allow to forgot password
+ 3. Add jwt for token based security
+ 4. add quote of the day
+ 5. clean ui
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

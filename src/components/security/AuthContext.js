@@ -13,35 +13,61 @@ export default function AuthProvider({ children }) {
     //3: Put some state in the context
     const [isAuthenticated, setAuthenticated] = useState(false)
 
-    const [username, setUsername] = useState(null)
+    const [username, setUsername] = useState('')
 
     const [token, setToken] = useState(null)
 
     
-    async function login(username, password) {
+    async function login(email, password) {
 
         try {
 
-            const response = await executeJwtAuthenticationService(username, password)
+           const response = await apiClient.post("/api/users/login",{email,password})
 
-            if(response.status===200){
+            // const response = await executeJwtAuthenticationService(username, password)
+
+            // if(response.status===200){
                 
-                const jwtToken = 'Bearer ' + response.data.token
+            //     const jwtToken = 'Bearer ' + response.data.token
                 
+            //     setAuthenticated(true)
+            //     setUsername(username)
+            //     // setToken(jwtToken)
+
+            //     apiClient.interceptors.request.use(
+            //         (config) => {
+            //             console.log('intercepting and adding a token')
+            //             config.headers.Authorization = jwtToken
+            //             return config
+            //         }
+            //     )
+
+            //     return true 
+            if(response.status == 200){
                 setAuthenticated(true)
-                setUsername(username)
-                setToken(jwtToken)
+                setUsername(email)
+                return true
+            }           
+            else {
+                logout()
+                return false
+            }    
+        } catch(error) {
+            logout()
+            return false
+        }
+    }
 
-                apiClient.interceptors.request.use(
-                    (config) => {
-                        console.log('intercepting and adding a token')
-                        config.headers.Authorization = jwtToken
-                        return config
-                    }
-                )
+    async function register(userData) {
 
-                return true            
-            } else {
+        try {
+
+           const response = await apiClient.post("/api/users/register",userData)
+            if(response.status == 200 || response.status < 300){
+                console.log("return true")
+                return true
+            }           
+            else {
                 logout()
                 return false
             }    
@@ -52,6 +78,7 @@ export default function AuthProvider({ children }) {
     }
 
 
+
     function logout() {
         setAuthenticated(false)
         setToken(null)
@@ -59,7 +86,7 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={ {isAuthenticated, login, logout, username, token}  }>
+        <AuthContext.Provider value={ {isAuthenticated, login,register, logout, username, token}  }>
             {children}
         </AuthContext.Provider>
     )

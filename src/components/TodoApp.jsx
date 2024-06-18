@@ -6,8 +6,9 @@ import ListTodosComponent from './ListTodosComponent'
 import ErrorComponent from './ErrorComponent'
 import WelcomeComponent from './WelcomeComponent'
 import LoginComponent from './LoginComponent'
-import TodoComponent from './TodoComponent'
+import UpdateTodoComponent from './UpdateTodoComponent'
 import RegisterComponent from './RegisterComponent'
+import FooterComponent from './FooterComponent'
 
   
 
@@ -40,6 +41,7 @@ export default function TodoApp() {
                             <AuthenticatedRoute>
                                 <HeaderComponent />
                                 <WelcomeComponent />
+                                <FooterComponent />
                             </AuthenticatedRoute>
                         } />
 
@@ -47,12 +49,14 @@ export default function TodoApp() {
                             <AuthenticatedRoute>
                                 <HeaderComponent />
                                 <ListTodosComponent />
+                                <FooterComponent />
                             </AuthenticatedRoute>
                         } />
                         <Route path='/todo/:id' element={
                             <AuthenticatedRoute>
                                 <HeaderComponent />
-                                  <TodoComponent />
+                                  <UpdateTodoComponent />
+                                <FooterComponent />
                             </AuthenticatedRoute>
                                }
                           />

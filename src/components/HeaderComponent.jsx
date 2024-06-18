@@ -20,7 +20,8 @@ export default function HeaderComponent() {
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
-                        <p className="navbar-brand ms-2 fs-2 text-muted badge badge-primary text-wrap " style={{ width: "6rem" }} >Todo App</p>
+                        <p className="navbar-brand ms-2 fs-2 text-muted badge badge-primary text-wrap " style={{ width: "6rem" }} >
+                            <Link className="nav-link" to="/welcome/Priyanshu">Todo App</Link></p>
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
                                 <li className="nav-item fs-5">{isAuthenticated && <Link className="nav-link" to="/welcome/Priyanshu">Home</Link>}</li>
