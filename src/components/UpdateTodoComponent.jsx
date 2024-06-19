@@ -115,7 +115,8 @@ export default function TodoComponent() {
                                 <Field type="date" className="form-control" name="targetDate" />
                             </fieldset>
                             <div>
-                                <button className="btn btn-success m-5" type="submit">Save</button>
+                            <button className="btn btn-success btn-lg mt-5" type="submit">Save</button>
+                            <button className="btn btn-outline-danger btn-lg mt-5 ms-2" onClick={() => navigate('/todos')}>Cancel</button>
                             </div>
                         </Form>
                     )}

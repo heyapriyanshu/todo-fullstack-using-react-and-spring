@@ -142,14 +142,14 @@ function LoginComponent() {
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="button"
-                                                    className="btn btn-outline-primary mb-4"
+                                                    className="btn btn-success btn-lg mb-4"
                                                     onClick={handleRegister}
                                                 >
                                                     Register
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    className="btn btn-outline-primary mb-4 ms-3"
+                                                    className="btn btn-outline-success btn-lg mb-4 ms-3"
                                                     onClick={handleRegisterToggle}
                                                 >
                                                     Back to Login
@@ -184,8 +184,8 @@ function LoginComponent() {
                                                 />
                                             </div>
                                             <div className="d-flex justify-content-center">
-                                                <button className="btn btn-outline-primary mb-4" type="button" name="login" onClick={handleLogin}>Login</button>
-                                                <button className="btn btn-outline-primary mb-4 ms-3" type="button" name="register" onClick={handleRegisterToggle}>
+                                                <button className="btn btn-success btn-lg mb-4" type="button" name="login" onClick={handleLogin}>Login</button>
+                                                <button className="btn btn-outline-success btn-lg mb-4 ms-3" type="button" name="register" onClick={handleRegisterToggle}>
                                                     Register
                                                 </button>
                                             </div>
