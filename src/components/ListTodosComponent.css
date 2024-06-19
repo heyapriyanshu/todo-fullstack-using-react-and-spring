@@ -25,4 +25,23 @@
     background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for opacity */
     z-index: 1050; /* Ensure this is above the modal */
   }
-  
+  .login-container {
+    position: relative;
+   
+}
+
+.tint-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.2;
+    height: 100%;
+    background: linear-gradient(135deg, rgb(229, 250, 1), rgba(71, 162, 236, 0.7)); /* Gradient colors */
+    overflow: hidden; 
+    
+    
+}
+.login-card {
+  margin-top: 10%; /* Adjust this value as needed */
+}

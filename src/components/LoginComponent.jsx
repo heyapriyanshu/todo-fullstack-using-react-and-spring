@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './security/AuthContext';
 import Typewriter from 'typewriter-effect';
-
-
+import './ListTodosComponent.css'
 function LoginComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -38,29 +37,27 @@ function LoginComponent() {
 
     async function handleLogin() {
         if (await authContext.login(username, password)) {
-            navigate(`/welcome/${username}`);
+            navigate(`/welcome/${authContext.firstName}`);
         } else {
             setShowErrorMessage(true);
         }
     }
 
-   async function handleRegister() {
-       
-       const userData = {
-		email, 
-		firstName,
-		lastName,
-        password
-		
-	   }
-       const response = await authContext.register(userData)
-       console.log("response",response)
-       if (response) {
-        setIsRegistering(false)
-    } else {
-        setShowErrorMessage(true);
-    }
-	   console.log(userData)
+    async function handleRegister() {
+        const userData = {
+            email,
+            firstName,
+            lastName,
+            password
+        };
+        const response = await authContext.register(userData);
+        console.log("response", response);
+        if (response) {
+            setIsRegistering(false);
+        } else {
+            setShowErrorMessage(true);
+        }
+        
     }
 
     function handleRegisterToggle() {
@@ -68,35 +65,38 @@ function LoginComponent() {
     }
 
     return (
-        <section className="" style={{ width: '100%', height: '100vh' }}>
-            <div className="px-4 py-5 px-md-5 text-center text-lg-start">
-                <div className="container">
+        <section className="login-container" style={{ width: '100%', height: '100vh' }}>
+            <div className="tint-overlay"></div>
+            <div className="px-4 py-5 px-md-5 text-center text-lg-start position-relative">
+                {/* Tint effect overlay */}
+                
+                <div className="container ">
                     <div className="row gx-lg-5 align-items-center">
                         <div className="col-lg-6 mb-5 mb-lg-0">
-                            <h1 style={{ color: "hsl(210, 29%, 25%)", fontSize: 85, textAlign: 'center' }}>
+                            <h3 style={{ color: "hsl(210, 29%, 25%)", fontSize: 85, textAlign: 'center' }}>
                                 <Typewriter
                                     options={{
-                                        strings: ["TODO List", "Tomorrow List", "Bucket List", "Grocery List"],
+                                        strings: ["TO-DO List", "Target List", "Wish-List", "Grocery List"],
                                         autoStart: true,
                                         loop: true,
                                     }}
                                 />
-                            </h1>
+                            </h3>
                         </div>
                         <div className="col-lg-6 mb-5 mb-lg-0">
-                            <div className="card">
+                            <div className="card login-card">
                                 <div className="card-body py-5 px-md-5">
                                     <div className="text-center">
-                                        <h2 className="fw-bold mb-5" style={{ color: "hsl(210, 29%, 25%)" }}>
+                                        <h1 className="fw-bold mb-5" style={{ color: "hsl(210, 29%, 25%)" }}>
                                             {isRegistering ? 'Register Now!' : 'Time for Login Now!'}
-                                        </h2>
+                                        </h1>
                                     </div>
                                     {isRegistering ? (
                                         <form>
                                             <div className="row">
                                                 <div className="col-md-6 mb-4">
                                                     <div className="form-outline">
-                                                        <label className="form-label" htmlFor="form3Example1">First name</label>
+                                                        <h6 className="form-label" htmlFor="form3Example1">First name</h6>
                                                         <input
                                                             type="text"
                                                             id="form3Example1"
@@ -108,7 +108,7 @@ function LoginComponent() {
                                                 </div>
                                                 <div className="col-md-6 mb-4">
                                                     <div className="form-outline">
-                                                        <label className="form-label" htmlFor="form3Example2">Last name</label>
+                                                        <h6 className="form-label" htmlFor="form3Example2">Last name</h6>
                                                         <input
                                                             type="text"
                                                             id="form3Example2"
@@ -120,7 +120,7 @@ function LoginComponent() {
                                                 </div>
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <label className="form-label" htmlFor="form3Example3">Email address</label>
+                                                <h6 className="form-label" htmlFor="form3Example3">Email address</h6>
                                                 <input
                                                     type="email"
                                                     id="form3Example3"
@@ -130,7 +130,7 @@ function LoginComponent() {
                                                 />
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <label className="form-label" htmlFor="form3Example4">Password</label>
+                                                <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <input
                                                     type="password"
                                                     id="form3Example4"
@@ -164,7 +164,7 @@ function LoginComponent() {
                                                 </div>
                                             )}
                                             <div className="form-outline mb-4">
-                                                <label className="form-label" htmlFor="form3Example3">Email Address</label>
+                                                <h6 className="form-label" htmlFor="form3Example3">Email Address</h6>
                                                 <input
                                                     type="text"
                                                     value={username}
@@ -174,7 +174,7 @@ function LoginComponent() {
                                                 />
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <label className="form-label" htmlFor="form3Example4">Password</label>
+                                                <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <input
                                                     type="password"
                                                     value={password}
