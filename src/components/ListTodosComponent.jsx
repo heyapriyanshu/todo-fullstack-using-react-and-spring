@@ -3,6 +3,7 @@ import {
 	createTodoApi,
 	retrieveAllTodosForUsernameApi,
 	deleteTodoApi,
+	updateTodoStatusApi
 } from "../api/TodoApiService";
 import { useAuth } from "./security/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -13,10 +14,8 @@ export default function ListTodosComponent() {
 	const [todos, setTodos] = useState([]);
 	const [newTask, setNewTask] = useState("");
 	const [loading, setLoading] = useState(true); // State to manage loading status
-	const [currentPage, setCurrentPage] = useState(1);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [deleteIndex, setDeleteIndex] = useState(null);
-	const itemsPerPage = 7;
 
 	const authContext = useAuth();
 	const navigate = useNavigate();
@@ -30,7 +29,7 @@ export default function ListTodosComponent() {
 	function refreshTodos() {
 		retrieveAllTodosForUsernameApi(username)
 			.then((response) => {
-				setTodos(response.data);
+				setTodos(response.data.reverse());
 				setLoading(false); // Set loading to false after data is fetched
 			})
 			.catch((error) => {
@@ -69,45 +68,38 @@ export default function ListTodosComponent() {
 
 	async function addTask() {
 		if (newTask.trim()) {
-			const newTodos = [
-				...todos,
-				{ description: newTask, done: false, targetDate: new Date() },
-			];
-			setTodos(newTodos);
-			setNewTask("");
-			setLoading(true);
 			const newTodo = {
 				description: newTask,
 				done: false,
 				targetDate: new Date(),
 			};
+			setLoading(true);
 			await createTodoApi(username, newTodo)
 				.then((response) => {
-					console.log("success");
+					setTodos([response.data, ...todos]); // Add new task at the beginning
 					setLoading(false);
 				})
-				.catch((error) => console.log(error));
+				.catch((error) => {
+					console.log(error);
+					setLoading(false);
+				});
+			setNewTask("");
 		}
 	}
 
-	const toggleTask = (index) => {
+	async function toggleTask(index){
+		const updatedTodo = { ...todos[index], done: !todos[index].done };
+		
+		
+		await updateTodoStatusApi(updatedTodo.id, updatedTodo.done)
+			.then(response => console.log("Task status updated successfully"))
+			.catch(error => console.log("Error updating task status", error));
+
 		const newTodos = [...todos];
-		newTodos[index].done = !newTodos[index].done;
+		newTodos[index] = updatedTodo;
 		setTodos(newTodos);
-		// Here, you would ideally make an API call to update the task's status in the backend.
+		
 	};
-
-	// Pagination Logic
-	const indexOfLastTodo = currentPage * itemsPerPage;
-	const indexOfFirstTodo = indexOfLastTodo - itemsPerPage;
-	const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
-
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-	const totalPages = Math.ceil(todos.length / itemsPerPage);
-
-	if (loading) {
-	}
 
 	return (
 		<div className="container">
@@ -133,8 +125,8 @@ export default function ListTodosComponent() {
 				</div>
 			)}
 			{!loading && (
-				<ul className="list-group w-75 h-75 mx-auto">
-					{currentTodos.slice().reverse().map((todo, index) => (
+				<ul className="list-group w-75 h-75 mx-auto todo-list">
+					{todos.map((todo, index) => (
 						<li
 							key={index}
 							className={`list-group-item d-flex justify-content-between align-items-center ${
@@ -146,7 +138,7 @@ export default function ListTodosComponent() {
 									type="checkbox"
 									className="form-check-input me-2"
 									checked={todo.done}
-									onChange={() => toggleTask(indexOfFirstTodo + index)}
+									onChange={() => toggleTask(index)}
 								/>
 								<span>{todo.description}</span>
 							</div>
@@ -159,9 +151,7 @@ export default function ListTodosComponent() {
 								</button>
 								<button
 									className="btn btn-sm"
-									onClick={() =>
-										handleDeleteTodoConfirmation(indexOfFirstTodo + index)
-									}
+									onClick={() => handleDeleteTodoConfirmation(index)}
 								>
 									❌
 								</button>
@@ -170,13 +160,6 @@ export default function ListTodosComponent() {
 					))}
 				</ul>
 			)}
-			<div className="pagination-container">
-				<Pagination
-					totalPages={totalPages}
-					paginate={paginate}
-					currentPage={currentPage}
-				/>
-			</div>
 
 			{showDeleteModal && <div className="modal-backdrop"></div>}
 			{showDeleteModal && (
@@ -215,30 +198,5 @@ export default function ListTodosComponent() {
 				</div>
 			)}
 		</div>
-	);
-}
-
-function Pagination({ totalPages, paginate, currentPage }) {
-	const pageNumbers = [];
-
-	for (let i = 1; i <= totalPages; i++) {
-		pageNumbers.push(i);
-	}
-
-	return (
-		<nav className="mt-3 ">
-			<ul className="pagination justify-content-center align-bottom">
-				{pageNumbers.map((number) => (
-					<li
-						key={number}
-						className={`page-item ${number === currentPage ? "active" : ""}`}
-					>
-						<a onClick={() => paginate(number)} className="page-link" href="#">
-							{number}
-						</a>
-					</li>
-				))}
-			</ul>
-		</nav>
 	);
 }

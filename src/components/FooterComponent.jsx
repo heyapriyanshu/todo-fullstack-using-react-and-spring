@@ -2,7 +2,7 @@ function FooterComponent() {
   return (
     <footer className="footer mt-auto py-3 bg-light mb-2" style={{ position: 'fixed', bottom: 0, width: '100%' }}>
       <div className="container d-flex justify-content-center">
-        <span className="text-muted">@2024 Contact Me </span>
+        <span className="text-muted">@2024 Connect with me </span>
         <a href="https://www.linkedin.com/in/priyanshuranjan-" target="_blank" rel="noopener noreferrer">
           <img
             src="https://cdn-icons-png.flaticon.com/512/174/174857.png"

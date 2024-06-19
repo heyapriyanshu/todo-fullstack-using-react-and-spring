@@ -45,3 +45,20 @@
 .login-card {
   margin-top: 10%; /* Adjust this value as needed */
 }
+.todo-list {
+	max-height: calc(6 * 3.5rem); /* Adjust the height based on the number of tasks */
+	overflow-y: auto;
+	border: 1px solid #ccc; /* Add border around the scrollable area */
+	
+	border-radius: 5px; /* Optional: round the corners of the border */
+}
+
+/* Hide the scrollbar */
+.todo-list::-webkit-scrollbar {
+	display: none; /* Chrome, Safari and Opera */
+}
+
+.todo-list {
+	-ms-overflow-style: none; /* Internet Explorer and Edge */
+	scrollbar-width: none; /* Firefox */
+}
