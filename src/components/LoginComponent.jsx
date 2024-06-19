@@ -41,7 +41,6 @@ function LoginComponent() {
         setLoading(true); // Set loading state to true
         if (await authContext.login(username, password)) {
             navigate(`/welcome/${authContext.firstName}`);
-            navigate(`/welcome/${authContext.firstName}`);
         } else {
             setShowErrorMessage(true);
         }
@@ -77,36 +76,24 @@ function LoginComponent() {
                 {/* Tint effect overlay */}
                 
                 <div className="container ">
-        <section className="login-container" style={{ width: '100%', height: '100vh' }}>
-            <div className="tint-overlay"></div>
-            <div className="px-4 py-5 px-md-5 text-center text-lg-start position-relative">
-                {/* Tint effect overlay */}
-                
-                <div className="container ">
                     <div className="row gx-lg-5 align-items-center">
                         <div className="col-lg-6 mb-5 mb-lg-0">
                             <h3 style={{ color: "hsl(210, 29%, 25%)", fontSize: 85, textAlign: 'center' }}>
-                            <h3 style={{ color: "hsl(210, 29%, 25%)", fontSize: 85, textAlign: 'center' }}>
                                 <Typewriter
                                     options={{
-                                        strings: ["TO-DO List", "Target List", "Wish-List", "Grocery List"],
                                         strings: ["TO-DO List", "Target List", "Wish-List", "Grocery List"],
                                         autoStart: true,
                                         loop: true,
                                     }}
                                 />
                             </h3>
-                            </h3>
                         </div>
                         <div className="col-lg-6 mb-5 mb-lg-0">
-                            <div className="card login-card">
                             <div className="card login-card">
                                 <div className="card-body py-5 px-md-5">
                                     <div className="text-center">
                                         <h1 className="fw-bold mb-5" style={{ color: "hsl(210, 29%, 25%)" }}>
-                                        <h1 className="fw-bold mb-5" style={{ color: "hsl(210, 29%, 25%)" }}>
                                             {isRegistering ? 'Register Now!' : 'Time for Login Now!'}
-                                        </h1>
                                         </h1>
                                     </div>
                                     {isRegistering ? (
@@ -114,7 +101,6 @@ function LoginComponent() {
                                             <div className="row">
                                                 <div className="col-md-6 mb-4">
                                                     <div className="form-outline">
-                                                        <h6 className="form-label" htmlFor="form3Example1">First name</h6>
                                                         <h6 className="form-label" htmlFor="form3Example1">First name</h6>
                                                         <input
                                                             type="text"
@@ -128,7 +114,6 @@ function LoginComponent() {
                                                 <div className="col-md-6 mb-4">
                                                     <div className="form-outline">
                                                         <h6 className="form-label" htmlFor="form3Example2">Last name</h6>
-                                                        <h6 className="form-label" htmlFor="form3Example2">Last name</h6>
                                                         <input
                                                             type="text"
                                                             id="form3Example2"
@@ -141,7 +126,6 @@ function LoginComponent() {
                                             </div>
                                             <div className="form-outline mb-4">
                                                 <h6 className="form-label" htmlFor="form3Example3">Email address</h6>
-                                                <h6 className="form-label" htmlFor="form3Example3">Email address</h6>
                                                 <input
                                                     type="email"
                                                     id="form3Example3"
@@ -151,7 +135,6 @@ function LoginComponent() {
                                                 />
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <input
                                                     type="password"
@@ -188,7 +171,6 @@ function LoginComponent() {
                                             )}
                                             <div className="form-outline mb-4">
                                                 <h6 className="form-label" htmlFor="form3Example3">Email Address</h6>
-                                                <h6 className="form-label" htmlFor="form3Example3">Email Address</h6>
                                                 <input
                                                     type="text"
                                                     value={username}
@@ -198,7 +180,6 @@ function LoginComponent() {
                                                 />
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <h6 className="form-label" htmlFor="form3Example4">Password</h6>
                                                 <input
                                                     type="password"
