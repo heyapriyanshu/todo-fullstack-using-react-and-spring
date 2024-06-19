@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { apiClient } from "../../api/ApiClient";
-import { executeJwtAuthenticationService } from "../../api/AuthenticationApiService";
+// import { executeJwtAuthenticationService } from "../../api/AuthenticationApiService";
 
 //1: Create a Context
 export const AuthContext = createContext()
@@ -16,14 +16,9 @@ export default function AuthProvider({ children }) {
     const [username, setUsername] = useState('')
 
     const [token, setToken] = useState(null)
-
     
-    async function login(email, password) {
-
-        try {
-
-           const response = await apiClient.post("/api/users/login",{email,password})
-
+    const [firstName, setFirstName] = useState('');
+/* JWT
             // const response = await executeJwtAuthenticationService(username, password)
 
             // if(response.status===200){
@@ -43,18 +38,24 @@ export default function AuthProvider({ children }) {
             //     )
 
             //     return true 
-            if(response.status == 200){
-                setAuthenticated(true)
-                setUsername(email)
-                return true
-            }           
-            else {
-                logout()
-                return false
-            }    
-        } catch(error) {
-            logout()
-            return false
+*/
+    async function login(email, password) {
+        try {
+            const response = await apiClient.post("/api/users/login", { email, password });
+    
+            if (response.status === 200) {
+                const { firstName } = response.data;  // Extract first name from response
+                setAuthenticated(true);
+                setUsername(email);
+                setFirstName(firstName);  // Store first name in state
+                return true;
+            } else {
+                logout();
+                return false;
+            }
+        } catch (error) {
+            logout();
+            return false;
         }
     }
 
@@ -63,7 +64,7 @@ export default function AuthProvider({ children }) {
         try {
 
            const response = await apiClient.post("/api/users/register",userData)
-            if(response.status == 200 || response.status < 300){
+            if(response.status === 200){
                 console.log("return true")
                 return true
             }           
@@ -86,7 +87,7 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={ {isAuthenticated, login,register, logout, username, token}  }>
+        <AuthContext.Provider value={ {isAuthenticated, login,register, logout, firstName,username, token}  }>
             {children}
         </AuthContext.Provider>
     )
