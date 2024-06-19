@@ -40,7 +40,7 @@ function LoginComponent() {
     async function handleLogin() {
         setLoading(true); // Set loading state to true
         if (await authContext.login(username, password)) {
-            navigate(`/welcome/${authContext.firstName}`);
+            navigate(`/welcome`);
         } else {
             setShowErrorMessage(true);
         }

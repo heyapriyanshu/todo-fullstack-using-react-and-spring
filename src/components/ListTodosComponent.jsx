@@ -134,7 +134,7 @@ export default function ListTodosComponent() {
 			)}
 			{!loading && (
 				<ul className="list-group w-75 h-75 mx-auto">
-					{currentTodos.map((todo, index) => (
+					{currentTodos.slice().reverse().map((todo, index) => (
 						<li
 							key={index}
 							className={`list-group-item d-flex justify-content-between align-items-center ${

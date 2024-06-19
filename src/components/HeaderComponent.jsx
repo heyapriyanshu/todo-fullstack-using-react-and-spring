@@ -14,7 +14,7 @@ export default function HeaderComponent() {
         setTimeout(() => {
             authContext.logout();
             setLoading(false); // Hide loading spinner after logout
-        }, 1000); // 1000 milliseconds = 1 second
+        }, 1800); // 1000 milliseconds = 1 second
     }
 
     return (
