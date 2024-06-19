@@ -16,5 +16,5 @@ export const createTodoApi
     = (username,  todo) => apiClient.post(`/users/${username}/todos`, todo)
 
 export const updateTodoStatusApi
-    = (id, isDone) => apiClient.put(`/api/todos/${id}/status`, { isDone });
+    = (id, isDone) => apiClient.put(`/api/todos/${id}/status/${isDone}`);
        
