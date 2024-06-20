@@ -62,3 +62,11 @@
 	-ms-overflow-style: none; /* Internet Explorer and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+.todo-description {
+  position: flex;
+  max-width: 100%; /* Adjust the max-width as needed */
+  overflow: hidden;
+  overflow-wrap: break-word;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+}

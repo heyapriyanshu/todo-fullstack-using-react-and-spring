@@ -13,7 +13,7 @@ export default function WelcomeComponent() {
         <div className="Welcome">
             <h1>Welcome {username} 👋</h1>
             <div>
-                Manage your todos - <Link to="/todos">Go here</Link>
+                Manage your todos - <Link className="btn btn-success"to="/todos">Go here</Link>
             </div>
             
             

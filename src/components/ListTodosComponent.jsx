@@ -106,14 +106,14 @@ export default function ListTodosComponent() {
 			{message && <div className="alert alert-warning ">{message}</div>}
 			<h2>To-Do List 📋</h2>
 
-			<div className="input-container mb-3 w-50 mx-auto">
+			<div className="input-container mb-3 w-75 mx-auto">
 				<textarea
 					className="form-control"
 					placeholder="Add your task"
 					value={newTask}
 					onChange={(e) => setNewTask(e.target.value)}
 				/>
-				<button className="btn btn-outline-success ms-2" onClick={addTask}>
+				<button className="btn btn-success ms-2" onClick={addTask}>
 					ADD
 				</button>
 			</div>
@@ -125,7 +125,7 @@ export default function ListTodosComponent() {
 				</div>
 			)}
 			{!loading && (
-				<ul className="list-group w-75 h-75 mx-auto todo-list">
+				<ul className="list-group w-75 h-75 mx-auto md-5 todo-list">
 					{todos.map((todo, index) => (
 						<li
 							key={index}
@@ -133,16 +133,16 @@ export default function ListTodosComponent() {
 								todo.done ? "completed" : ""
 							}`}
 						>
-							<div className="d-flex align-items-center">
+							<div className="d-flex align-items-center w-75">
 								<input
 									type="checkbox"
 									className="form-check-input me-2"
 									checked={todo.done}
 									onChange={() => toggleTask(index)}
 								/>
-								<span>{todo.description}</span>
+								<span className="todo-description" >{todo.description}</span>
 							</div>
-							<div>
+							<div className="position-absolute top-0 end-0 ">
 								<button
 									className="btn btn-sm me-2"
 									onClick={() => handleUpdateTodo(todo.id)}
