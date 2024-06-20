@@ -4,7 +4,7 @@
 
 This project is a comprehensive web application designed to add productivity to your task with its simple UI. It utilizes a robust tech stack to ensure high performance and scalability.
 
-This repository only content frontend(React). For backend code [Go Here]([https://github.com/heyapriyanshu/TodoListBackend](https://github.com/heyapriyanshu/TodoListBackend))
+This repository only content frontend(React). For backend code [Go Here](https://github.com/heyapriyanshu/TodoListBackend)
 
 ## Tech Stack
 
