@@ -3,7 +3,8 @@
 ## Overview
 
 This project is a comprehensive web application designed to add productivity to your task with its simple UI. It utilizes a robust tech stack to ensure high performance and scalability.
-This repository only content frontend(React). For backend code [Go Here]([url](https://github.com/heyapriyanshu/TodoListBackend))
+
+This repository only content frontend(React). For backend code [Go Here]([https://github.com/heyapriyanshu/TodoListBackend](https://github.com/heyapriyanshu/TodoListBackend))
 
 ## Tech Stack
 
@@ -84,6 +85,6 @@ To get a local copy up and running, follow these simple steps.
 ## Contact
 
 Your Name - [heyapriyanshu@gmail.com](mailto:heyapriyanshu@gmail.com)
-Project Live Link: [Todo-List]([url](https://list-todo.priyanshuranjan.live/))
+Project Live Link: [Todo-List](https://list-todo.priyanshuranjan.live/)
 
 ---
