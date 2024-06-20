@@ -1,96 +1,89 @@
+# Todo List 
 
-Features added/changes in V1.2
+## Overview
 
-1. Added multiple user support with register and login
-2. Jwt removed and basic authentication is used
-3. Added footer
-4. UI Changes: including add todo, pagination, removed call helloworld button
-5. TodoApp clickable and link to home for mobile devices
+This project is a comprehensive web application designed to add productivity to your task with its simple UI. It utilizes a robust tech stack to ensure high performance and scalability.
+This repository only content frontend(React). For backend code [Go Here]([url](https://github.com/heyapriyanshu/TodoListBackend))
+
+## Tech Stack
+
+- **Backend:** Spring Boot, hosted on Render.com
+- **Database:** PostgreSQL, provided by Supabase.com
+- **Frontend:** React.js, Deployed on Vercel.com
+
+## Features
+
+- [List of current features]
+  - Multiple User support
+  - Clean UI
+  - Strikethrough for complete task
+
+## Future Updates
+
+- [List of upcoming features]
+  - Tasks statistics on footer
+  - LocalStorage for easy login
+  - Fix for refereshing website
+  - More validations
+
+We are continuously working on enhancing the application. Here are some of the planned updates:
+
+1. **UI Optimization**
+   - Implement form validations to improve user experience.
+   - Enhance overall UI/UX design for better accessibility and aesthetics.
+   
+2. **Performance Improvements**
+   - Optimize backend code for faster response times.
+   - Implement caching mechanisms to reduce database load.
+
+3. **New Features**
+   - User authentication and authorization.
+   - Integration with third-party services.(Google, Facebook signin)
+   - Advanced search functionality with filtering options.
+
+4. **Testing and Quality Assurance**
+   - Increase test coverage for both backend and frontend.
+   - Implement automated end-to-end testing.
+
+5. **Documentation**
+   - Comprehensive API documentation.
+   - Detailed user guide and setup instructions.
+
+## Installation and Setup
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+- Node.js(for frontend)
+- PostgreSQL
 
 
- More features to add
+### Frontend Setup
 
- 1. Add loading to all the buttons
- 2. Create user profile and allow to forgot password
- 3. Add jwt for token based security
- 4. add quote of the day
- 5. clean ui
+1. Navigate to the frontend directory:
+   ```sh
+   cd ../frontend
+   ```
+2. Install NPM packages:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm start
+   ```
+4. Make sure to add all libraries in your setup
+
+### Database Setup
+
+1. Create a new PostgreSQL database on Supabase.com.
+2. Configure the database connection settings in `application.properties` (backend) and `.env` (frontend).
 
 
+## Contact
 
+Your Name - [heyapriyanshu@gmail.com](mailto:heyapriyanshu@gmail.com)
+Project Live Link: [Todo-List]([url](https://list-todo.priyanshuranjan.live/))
 
-
-
-
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
