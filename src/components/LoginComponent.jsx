@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './security/AuthContext';
 import Typewriter from 'typewriter-effect';
-import './ListTodosComponent.css'
+import './ListTodosComponent.css';
 
 function LoginComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showErrorMessage, setShowErrorMessage] = useState(false);
-    const [isRegistering, setIsRegistering] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false); // State for loading
+    const [message, setMessage] = useState(''); // Unified state for messages
+    const [isRegistering, setIsRegistering] = useState(false);
 
     const navigate = useNavigate();
     const authContext = useAuth();
@@ -39,34 +39,58 @@ function LoginComponent() {
 
     async function handleLogin() {
         setLoading(true); // Set loading state to true
-        if (await authContext.login(username, password)) {
-            navigate(`/welcome`);
-        } else {
-            setShowErrorMessage(true);
+        setMessage(''); // Clear any previous messages
+
+        // Set a timer for showing the disclaimer
+        const timer = setTimeout(() => {
+            setMessage('The server is waking up. This may take 1-2 minutes. Please wait...');
+        }, 5000);
+
+        try {
+            if (await authContext.login(username, password)) {
+                clearTimeout(timer); // Clear the timer if the call returns within 5 seconds
+                navigate(`/welcome`);
+            } else {
+                setMessage('Authentication Failed. Please check your credentials.');
+            }
+        } finally {
+            setLoading(false); // Set loading state back to false
         }
-        setLoading(false); // Set loading state back to false
     }
 
     async function handleRegister() {
         setLoading(true); // Set loading state to true
+        setMessage(''); // Clear any previous messages
+
+        // Set a timer for showing the disclaimer
+        const timer = setTimeout(() => {
+            setMessage('The server is waking up. This may take 1-2 minutes. Please wait...');
+        }, 5000);
+
         const userData = {
             email,
             firstName,
             lastName,
             password
         };
-        const response = await authContext.register(userData);
-        console.log("response", response);
-        if (response) {
-            setIsRegistering(false);
-        } else {
-            setShowErrorMessage(true);
+
+        try {
+            const response = await authContext.register(userData);
+            clearTimeout(timer); // Clear the timer if the call returns within 5 seconds
+            if (response) {
+                setIsRegistering(false);
+                setMessage('Registered successfully. Please login.');
+            } else {
+                setMessage('Registration Failed. Please check your details.');
+            }
+        } finally {
+            setLoading(false); // Set loading state back to false
         }
-        setLoading(false); // Set loading state back to false
     }
 
     function handleRegisterToggle() {
         setIsRegistering(!isRegistering);
+        setMessage(''); // Clear any previous messages
     }
 
     return (
@@ -75,7 +99,7 @@ function LoginComponent() {
             <div className="px-4 py-5 px-md-5 text-center text-lg-start position-relative">
                 {/* Tint effect overlay */}
                 
-                <div className="container ">
+                <div className="container">
                     <div className="row gx-lg-5 align-items-center">
                         <div className="col-lg-6 mb-5 mb-lg-0">
                             <h3 style={{ color: "hsl(210, 29%, 25%)", fontSize: 85, textAlign: 'center' }}>
@@ -96,6 +120,11 @@ function LoginComponent() {
                                             {isRegistering ? 'Register Now!' : 'Time for Login Now!'}
                                         </h1>
                                     </div>
+                                    {message && (
+                                        <div className={`text-center mb-3 ${message.includes('successfully') ? 'text-success' : 'text-warning'}`}>
+                                            {message}
+                                        </div>
+                                    )}
                                     {isRegistering ? (
                                         <form>
                                             <div className="row">
@@ -164,11 +193,6 @@ function LoginComponent() {
                                         </form>
                                     ) : (
                                         <form>
-                                            {showErrorMessage && (
-                                                <div className="errorMessage text-center" style={{ color: "#880808" }}>
-                                                    Authentication Failed. Please check your credentials.
-                                                </div>
-                                            )}
                                             <div className="form-outline mb-4">
                                                 <h6 className="form-label" htmlFor="form3Example3">Email Address</h6>
                                                 <input
