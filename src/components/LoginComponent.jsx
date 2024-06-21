@@ -47,11 +47,14 @@ function LoginComponent() {
         }, 5000);
 
         try {
-            if (await authContext.login(username, password)) {
-                clearTimeout(timer); // Clear the timer if the call returns within 5 seconds
+            const response = await authContext.login(username, password);
+            clearTimeout(timer); // Clear the timer if the call returns within 5 seconds
+            if (response) {
+                
                 navigate(`/welcome`);
             } else {
                 setMessage('Authentication Failed. Please check your credentials.');
+                
             }
         } finally {
             setLoading(false); // Set loading state back to false
