@@ -84,7 +84,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Contact
 
-Your Name - [heyapriyanshu@gmail.com](mailto:heyapriyanshu@gmail.com)
+Priyanshu Ranjan - [heyapriyanshu@gmail.com](mailto:heyapriyanshu@gmail.com)
 Project Live Link: [Todo-List](https://list-todo.priyanshuranjan.live/)
 
 ---
